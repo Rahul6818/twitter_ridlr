@@ -22,30 +22,6 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->get('encode', function (\Illuminate\Http\Request $request) {
-
-    return response()->json([
-
-        'result' => base64_encode($request->input('value')),
-
-    ]);
-
-});
-
-
-
-$app->get('decode', function (\Illuminate\Http\Request $request) {
-
-    return response()->json([
-
-        'result' => base64_decode($request->input('value')),
-
-    ]);
-
-});
-
-
-
 $app->group(['prefix' => 'api/v1','namespace'=> 'App/Http/Controllers'],function($app){
 	$app->group(['prefix'=>'tweet'],function($app){
 		$app->get('/','App\Http\Controllers\TweetController@index');
